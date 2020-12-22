@@ -42,6 +42,10 @@ module led_average(input audio_enable, input [7:0] audio_data, output [7:0] out,
  endcase
 endmodule 
 
+//=====================================================
+//    Resverse Arbiter
+//=====================================================
+
 module rev_Arbiter( r, g);
  	input [7:0] r;
  	output [7:0] g;
@@ -51,6 +55,9 @@ module rev_Arbiter( r, g);
  	assign g = r & c ;
 endmodule 
 
+
+
+/*  TEST BENCH
 module arbiter_tb;
 
 	reg [7:0] r;
@@ -95,3 +102,4 @@ module av_tb;
  	$stop;
 	end
 endmodule 
+*/
