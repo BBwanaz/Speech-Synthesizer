@@ -1,7 +1,7 @@
 # Speech-Synthesizer
 A speech synthesizer emulating the SPO256 speech synthesizer chip from the 1980s.
 
-The code applies DSP algorithms and a **picoblaze embedded processor** to output voice messages counting from 0 - 21 and ending the cycle with the statement "I hate COVID 19) before restarting. A digital averaging algorithm is applied which displays on LEDs 2-9, the signal stregnth (output level) for each word when pronounced.
+The code applies DSP algorithms and a **picoblaze embedded processor** to output voice messages counting from 0 - 21 and ending the cycle with the statement "I hate COVID 19" before restarting. A digital averaging algorithm is applied which displays on LEDs 2-9, the signal stregnth (output level) for each word when pronounced.
 
 Used **Signal Tap** for debugging and ModelSim to run testbenches.
 Download the sof file, load it onto your DE1SoC, connect headphones and press E.
