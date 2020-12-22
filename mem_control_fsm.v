@@ -11,15 +11,15 @@ module mem_control_fsm(clk, start, inread, waitrequest, readdata, flashread, fla
 	
 	reg [5:0] state = idle;
 	
-	parameter idle = 			6'b000_000;
+	parameter idle = 		6'b000_000;
 	parameter checkop = 		6'b001_000;
 	parameter qread = 		6'b010_000;
-	parameter read = 			6'b011_000;
+	parameter read = 		6'b011_000;
 	parameter qwrite = 		6'b100_010;
-	parameter waitwrite = 	6'b101_010;
+	parameter waitwrite = 		6'b101_010;
 	parameter write = 		6'b110_010;
-	parameter finished = 	6'b111_100;
-	parameter wait_   =     6'b111_001;
+	parameter finished = 		6'b111_100;
+	parameter wait_   =     	6'b111_001;
 	
 	assign flashread = state[0];
 	assign flashwrite = state[1];
@@ -28,7 +28,7 @@ module mem_control_fsm(clk, start, inread, waitrequest, readdata, flashread, fla
 	
 	always @(posedge clk) begin
 		case(state)
-			idle: if(start) 
+			idle: 	if(start) 
 						state <= checkop;
 				
 					//check if read or right
@@ -37,18 +37,16 @@ module mem_control_fsm(clk, start, inread, waitrequest, readdata, flashread, fla
 						else
 						state <= qwrite;
 			wait_ : state <= qread;			
-						
-					//if read do this
 					
-			qread: if(waitrequest)
+			qread: 	if(waitrequest)
 						state <= qread;
 						else
 						state <= read;
 						
 			read: begin
-						state <= finished;
-						outdata <= readdata;
-					end
+					state <= finished;
+					outdata <= readdata;
+				end
 			
 			
 					//if read do this
@@ -57,13 +55,11 @@ module mem_control_fsm(clk, start, inread, waitrequest, readdata, flashread, fla
 						else
 						state <= waitwrite;
 						
-			waitwrite: state <= write;
+			waitwrite: 	state <= write;
 			
-			write:	state <= finished;
+			write:		state <= finished;
 			
-			
-			
-			finished:		state <= idle;
+			finished:	state <= idle;
 		
 		endcase
 	end
