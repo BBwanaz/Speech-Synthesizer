@@ -4,7 +4,7 @@ module clk_divide(clk_input, divisor,clk_output);
 	
 	input clk_input;
 	input [31:0] divisor;
-	output clk_output;
+	output reg clk_output;
 	
 	reg [31:0] counter = 32'd0;
 	
