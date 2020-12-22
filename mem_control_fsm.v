@@ -30,8 +30,6 @@ module mem_control_fsm(clk, start, inread, waitrequest, readdata, flashread, fla
 		case(state)
 			idle: 	if(start) 
 						state <= checkop;
-				
-					//check if read or right
 			checkop: if(inread)
 						state <= wait_;
 						else
@@ -48,8 +46,6 @@ module mem_control_fsm(clk, start, inread, waitrequest, readdata, flashread, fla
 					outdata <= readdata;
 				end
 			
-			
-					//if read do this
 			qwrite: if(waitrequest)
 						state <= qwrite;
 						else
